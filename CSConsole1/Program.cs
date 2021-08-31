@@ -7,34 +7,46 @@ namespace CSConsole1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Enter filename >");
-
-            String filename = "..\\..\\..\\" + Console.ReadLine() + ".txt";
-
-            StreamWriter SW = new StreamWriter(filename);
-            Console.WriteLine("Enter first line to write to file.");
-            String line2 = Console.ReadLine();
-            SW.WriteLine(line2);
-            SW.Close();
-
-            Console.WriteLine("r - read file\nq - quit\n>");
-            String selection = Console.ReadLine();
-            if (selection == "r")
+            try
             {
+                Console.WriteLine("Enter filename >");
 
-                StreamReader SR = new StreamReader(filename);
-                String line = SR.ReadLine();
-                while (line != null)
+                String filename = "..\\..\\..\\" + Console.ReadLine() + ".txt";
+
+                StreamWriter SW = new StreamWriter(filename);
+                Console.WriteLine("Enter first line to write to file.");
+                String line2 = Console.ReadLine();
+                SW.WriteLine(line2);
+                SW.Close();
+
+                Console.WriteLine("r - read file\nq - quit\n>");
+                String selection = Console.ReadLine();
+                if (selection == "r")
                 {
-                    Console.WriteLine(line);
-                    line = SR.ReadLine();
-                }
-                SR.Close();
-                Console.WriteLine();
 
-                Console.Write(line);
+                    StreamReader SR = new StreamReader(filename);
+                    String line = SR.ReadLine();
+                    while (line != null)
+                    {
+                        Console.WriteLine(line);
+                        line = SR.ReadLine();
+                    }
+                    SR.Close();
+                    Console.WriteLine();
+
+                    Console.Write(line);
+                }
+                else if (selection == "q") return;
             }
-            else if (selection == "q") return;
+            catch(Exception e)
+            {
+                Console.WriteLine("Exception: " + e.Message);
+            }
+            finally
+            {
+                Console.WriteLine("Program terminated normally.");
+            }
+           
 
 
            
