@@ -14,9 +14,15 @@ namespace CSConsole1
                 String filename = "..\\..\\..\\" + Console.ReadLine() + ".txt";
 
                 StreamWriter SW = new StreamWriter(filename);
-                Console.WriteLine("Enter first line to write to file.");
-                String line2 = Console.ReadLine();
-                SW.WriteLine(line2);
+                Console.WriteLine("Enter first line to write to file. (QUIT to quit)");
+
+                String line2 = "";
+                while (line2 != "QUIT")
+                {
+                    line2 = Console.ReadLine();
+                    SW.WriteLine(line2);
+                }
+
                 SW.Close();
 
                 Console.WriteLine("r - read file\nq - quit\n>");
@@ -38,18 +44,19 @@ namespace CSConsole1
                 }
                 else if (selection == "q") return;
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 Console.WriteLine("Exception: " + e.Message);
+                Console.WriteLine(e.StackTrace);
             }
             finally
             {
-                Console.WriteLine("Program terminated normally.");
+                Console.WriteLine("Program terminated.");
             }
-           
 
 
-           
+
+
 
             //String s;
             //Console.WriteLine("Hello World!");
